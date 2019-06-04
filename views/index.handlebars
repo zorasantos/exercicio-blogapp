@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem-vindo ao blog do Zora</h1>
+  <p class="lead">Blog simples desenvolvido por Zoranildo Santos </p>
+  <hr class="my-4">
+  <p>A criação deste blog faz parte dos meus estudos na area de desenvolvimento web</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Crie uma conta</a>
+</div>
+
+<hr>
+
+<h2>Postagens recentes: </h2>
+
+{{#each postagens}}
+    <div class="card">
+        <div class="card-body">
+            <h3>{{titulo}}</h3>
+            <p>{{descricao}}</p>
+            <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
+            <hr>
+            <small>Categoria: {{categoria.nome}}</small><br>
+            <small>Data de Publicação: {{data}}</small>
+        </div>
+    </div>
+{{else}}
+    <h5>Nenhuma Postagem</h5>
+{{/each}}

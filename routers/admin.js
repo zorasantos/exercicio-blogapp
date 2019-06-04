@@ -55,7 +55,7 @@ router.post('/categorias/nova', (req, res) => {
         req,flash('error_msg', 'Houve um erro ao salvar a categoria!')
         req.redirect('/admin')
     })
-  }
+}
 })
 
 router.get('/categorias/edit/:id', (req, res) => {
@@ -153,7 +153,11 @@ router.get('/postagens/edit/:id', (req, res) => {
             req.flash('error_msg', 'Houve um erro ao listar categorias')
             res.redirect('/admin/postagens')
         })
+    }).catch((err) => {
+        req.flash('error_msg', 'Houve um erro ao carregar o formulario de edição')
+        res.redirect('/admin/postagens')
     })
+})
 
 router.post('/postagem/edit', (req, res) => {
     Postagem.findOne({_id: req.body.id}).then((postagem) => {
@@ -176,7 +180,15 @@ router.post('/postagem/edit', (req, res) => {
         res.redirect('/admin/postagens')
     })
 })
-})
 
+router.get('/postagens/deletar/:id', (req, res) => {
+    Postagem.remove({_id: req.params.id}).then(() => {
+        req.flash('success_msg', 'Postagem deletada com sucesso!')
+        res.redirect('/admin/postagens')
+    }).catch((err) => {
+        req.flash('error_msg', 'Houve um erro ao tentar deletar!')
+        res.redirect('/admin/postage')
+    })
+})
 
 module.exports = router
