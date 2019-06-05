@@ -3,7 +3,10 @@
   <p class="lead">Blog simples desenvolvido por Zoranildo Santos </p>
   <hr class="my-4">
   <p>A criação deste blog faz parte dos meus estudos na area de desenvolvimento web</p>
+  {{#if user}}
+  {{else}}
   <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+  {{/if}}  
 </div>
 
 <hr>
