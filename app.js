@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //Rotas
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     Postagem.find().populate('categoria').sort({data: 'desc'}).then((postagens) => {
     res.render('index', {postagens: postagens})
 }).catch((err) => {
