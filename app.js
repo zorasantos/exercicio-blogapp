@@ -14,7 +14,7 @@ const Categoria = mongoose.model('categorias')
 const usuarios = require('./routers/usuario')
 const passport = require('passport')
 require('./config/auth')(passport)
-//const db = require('./config/db')
+const db = require('./config/db')
 
 //Sessão
 app.use(session({
@@ -42,7 +42,7 @@ app.engine('handlebars', handlebars({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 //Mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://blogdozora:a123456@ds233167.mlab.com:33167/blogapp-zora').then(() => {
+mongoose.connect(db.mongoURI).then(() => {
     console.log('Conectado ao mongo')
 }).catch((err) => {
     console.log('Erro ao se conectar: '+err)
